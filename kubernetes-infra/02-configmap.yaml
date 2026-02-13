@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: frontend-config
+  namespace: cat-ecommerce
+data:
+  REACT_APP_API_URL: "http://localhost:8000/api"
+  REACT_APP_ENV: "development"
