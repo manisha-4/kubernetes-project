@@ -42,7 +42,7 @@ jobs:
 
       - name: Terraform Init
         working-directory: terraform
-        run: terraform init -backendconfig='bucket=${{vars.TERRAFORM_DEPLOYMENT_BUCKET}}' -backendconfig='key=${{vars.TERRAFORM_STATE_KEY}}' -backendconfig='region=ap-southeast-2'
+        run: terraform init -backend-config='bucket=${{vars.TERRAFORM_DEPLOYMENT_BUCKET}}' -backend-config='key=${{vars.TERRAFORM_STATE_KEY}}' -backend-config='region=ap-southeast-2'
 
       - name: Terraform Validate
         working-directory: terraform
