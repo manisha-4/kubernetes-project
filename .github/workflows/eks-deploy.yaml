@@ -1,4 +1,4 @@
-name: Deploy Frontedn to EKS cluster
+name: Deploy Frontend to EKS cluster
 
 on:
   push:
@@ -41,6 +41,9 @@ jobs:
 
       - name: Update kubeconfig
         run: aws eks update-kubeconfig --region ap-southeast-2 --name eks-test-cluster
+
+      - name: Verify cluster access 
+        run: kubectl get nodes
 
       - name: Setup Helm
         uses: azure/setup-helm@v3
