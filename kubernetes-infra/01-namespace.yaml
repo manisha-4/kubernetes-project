@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: cat-ecommerce
-  labels:
-    name: cat-ecommerce

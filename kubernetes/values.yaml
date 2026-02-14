@@ -1,0 +1,13 @@
+mapRoles:
+  - rolearn: arn:aws:iam::990751731740:role/eks-terraform-role
+    username: github-deployer
+    groups:
+      - system:masters
+image:
+  repository: 990751731740.dkr.ecr.ap-southeast-2.amazonaws.com/cat-repository
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer
+  port: 80
