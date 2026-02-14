@@ -1,11 +1,14 @@
-terraform{
+terraform {
   required_providers {
     aws = {
-      source ="harshicorp/aws"
+      source  = "hashicorp/aws"
       version = "4.53.0"
     }
   }
-}
-terraform {
+
   backend "s3" {}
+}
+
+provider "aws" {
+  region = "ap-southeast-2"
 }
