@@ -53,5 +53,5 @@ jobs:
         run: terraform plan --var-file="devl.tfvars" -out=tfplan
 
       - name: Terraform Apply
-        if: github.ref == 'refs/heads/main'
+        working-directory: terraform
         run: terraform apply -auto-approve tfplan
