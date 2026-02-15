@@ -10,10 +10,9 @@ image:
 
 service:
   type: ClusterIP
-  port: 80
+  port: 8080
+  enabled: true
 httpRoute:
-  enabled: false
-service:
   enabled: false
 
 ingress:
