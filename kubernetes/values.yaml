@@ -11,3 +11,10 @@ image:
 service:
   type: LoadBalancer
   port: 80
+httpRoute:
+  enabled: false
+service:
+  enabled: false
+
+ingress:
+  enabled: false
