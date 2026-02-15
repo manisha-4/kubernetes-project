@@ -1,4 +1,4 @@
-name: Deploy Frontend to EKS cluster
+name: Deploy stacks  to EKS cluster
 
 on:
   push:
@@ -99,12 +99,11 @@ jobs:
 
       - name: Deploy Helm chart
         run: |
-          helm upgrade --install frontend-app ./kubernetes \
+          helm upgrade --install backend-app ./kubernetes \
             --namespace default \
             --set image.repository=990751731740.dkr.ecr.ap-southeast-2.amazonaws.com/cat-backend-repository \
             --set image.tag=latest
       - name: Verify Deployment - Pods
         run: kubectl get pods -n default 
 
-      - name: Verify Deployment - Service 
-        run: kubectl get svc frontend-app -n default
+    
