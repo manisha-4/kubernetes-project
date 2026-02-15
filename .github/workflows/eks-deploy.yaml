@@ -97,9 +97,13 @@ jobs:
         uses: azure/setup-helm@v3
         with:
           version: v3.14.0
+      - name: uninstall backend helm chart
+        run: |
+          helm uninstall backend-app -n default || echo "Release not found, skipping uninstall"
 
       - name: Deploy Helm chart
         run: |
+
           helm upgrade --install backend-app ./kubernetes \
             --namespace default \
             --set image.repository=990751731740.dkr.ecr.ap-southeast-2.amazonaws.com/cat-backend-repository \
