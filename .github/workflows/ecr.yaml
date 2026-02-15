@@ -9,15 +9,15 @@ on:
       Operations:
         description: 'Select the Terraform operation to perform'
         required: true
-        default: 'Apply'
+        default: 'frontend-image'
         options:
-          - Plan
-          - Apply
+          - frontend-image
+          - backend-image
 
 jobs:
   Infrastructure:
     name: Deploy Infrastructure with Terraform
-    if: ${{ (github.event.inputs.Operations == 'Apply')}}
+    if: ${{ (github.event.inputs.Operations == 'frontend-image')}}
     runs-on: ubuntu-latest
     environment: devl
 
@@ -58,4 +58,44 @@ jobs:
 
 
 
-      
+  Backend-Image:
+    name: Deploy Infrastructure with Terraform
+    if: ${{ (github.event.inputs.Operations == 'backend-image')}}
+    runs-on: ubuntu-latest
+    environment: devl
+
+    permissions:
+      id-token: write   # Required for OIDC
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::990751731740:role/eks-terraform-role
+          aws-region: ap-southeast-2
+
+      - name: Login to Amazon ECR
+        id: ecr-login
+        uses: aws-actions/amazon-ecr-login@v2
+        
+         
+      - name: Build and Push Docker Image to ECR
+        env:
+          ECR_REGISTRY: ${{ steps.ecr-login.outputs.registry }}
+          ECR_REPOSITORY: cat-backend-repository
+          IMAGE_TAG: latest
+        run: |
+          cd backend
+          # Build the Docker image
+          docker build -t $ECR_REPOSITORY:$IMAGE_TAG .
+          
+          # Tag the image with the ECR registry
+          docker tag $ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          
+          # Push the image to ECR
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+    

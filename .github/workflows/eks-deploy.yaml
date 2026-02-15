@@ -9,10 +9,10 @@ on:
       Operations:
         description: 'Select the Terraform operation to perform'
         required: true
-        default: 'Apply'
+        default: 'frontend-apply'
         options:
-          - Plan
-          - Apply
+          - frontend-apply
+          - Backend-apply
 
 jobs:
   deploy:

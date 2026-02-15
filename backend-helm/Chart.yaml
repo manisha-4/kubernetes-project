@@ -1,0 +1,16 @@
+apiVersion: v2
+name: backend-app
+description: A Helm chart for the Flask backend e-commerce application
+type: application
+version: 1.0.0
+appVersion: "1.0.0"
+maintainers:
+  - name: Your Name
+    email: your.email@example.com
+keywords:
+  - flask
+  - backend
+  - ecommerce
+home: https://github.com/yourusername/kubernetes-project
+sources:
+  - https://github.com/yourusername/kubernetes-project/tree/master/backend
