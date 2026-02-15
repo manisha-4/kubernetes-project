@@ -50,9 +50,7 @@ jobs:
         uses: azure/setup-helm@v3
         with:
           version: v3.14.0
-      - name: uninstall backend helm chart
-        run: |
-          helm uninstall backend-app -n default || echo "Release not found, skipping uninstall"
+      
 
       - name: Deploy Helm chart
         run: |
@@ -100,9 +98,8 @@ jobs:
         uses: azure/setup-helm@v3
         with:
           version: v3.14.0
-      - name: uninstall backend helm chart
-        run: |
-          helm uninstall frontend-app -n default || echo "Release not found, skipping uninstall"
+      
+
 
       - name: Deploy Helm chart
         run: |
