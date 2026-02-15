@@ -9,6 +9,7 @@ on:
       Operations:
         description: 'Select the Terraform operation to perform'
         required: true
+        type: choice
         default: 'frontend-apply'
         options:
           - frontend-apply

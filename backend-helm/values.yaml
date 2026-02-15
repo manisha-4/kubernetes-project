@@ -1,7 +1,7 @@
 replicaCount: 2
 
 image:
-  repository: 990751731740.dkr.ecr.ap-southeast-2.amazonaws.com/backend-app
+  repository: 990751731740.dkr.ecr.ap-southeast-2.amazonaws.com/backend-app-repository
   pullPolicy: IfNotPresent
   tag: "latest"
 
