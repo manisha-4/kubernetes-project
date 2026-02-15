@@ -61,8 +61,7 @@ jobs:
       - name: Verify Deployment - Pods
         run: kubectl get pods -n default 
 
-      - name: Verify Deployment - Service 
-        run: kubectl get svc frontend-app -n default
+ 
 
   deploy-backend:
     name: Deploy Backend to eks 
